@@ -10,7 +10,7 @@ MEAL_LIMITS = {
 
 # --- Завантаження продуктів ---
 products = {}
-with open("products.csv", encoding="utf-8") as f:
+with open("foods_100g_ua.csv", encoding="utf-8") as f:
     reader = csv.DictReader(f)
     for row in reader:
         products[row["name"]] = float(row["kcal"])
@@ -59,3 +59,4 @@ if total_kcal > MEAL_LIMITS[meal]:
     print("⚠️ Перевищено ліміт!")
 else:
     print("✅ У межах ліміту")
+
