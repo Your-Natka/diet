@@ -64,13 +64,17 @@ def stats_today(entries, foods):
     print(f"🍞 Вуглеводи: {round(total['carbs'],1)} г")
 
 # ---------- СТАТИСТИКА ЗА 7 ДНІВ ----------
-def stats_week(entries):
+def stats_week(entries, foods):
     start = date.today() - timedelta(days=6)
     per_day = defaultdict(float)
 
     for e in entries:
         if e["date"] >= start:
-            per_day[e["date"]] += e["kcal"]
+            food = foods.get(e["product"])
+            if not food:
+                continue
+            factor = e["grams"] / 100
+            per_day[e["date"]] += food["kcal"] * factor
 
     print("\n📈 Останні 7 днів:")
     for d in sorted(per_day):
@@ -87,4 +91,4 @@ if __name__ == "__main__":
 
     if diary:
         stats_today(diary, foods)
-        stats_week(diary)
+        stats_week(diary, foods)
