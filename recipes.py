@@ -3,10 +3,11 @@ recipes = [
         "name": "Омлет з овочами",
         "image": "img/Омлет з овочами.jpeg",
         "ingredients": [
-            {"product": "Яйце куряче", "grams": 100},
-            {"product": "Помідор", "grams": 50},
-            {"product": "Цибуля", "grams": 20},
-            {"product": "Броколі", "grams": 30}
+            {"product": "Яйце куряче", "grams": 90},
+            {"product": "Помідор", "grams": 80},
+            {"product": "Цибуля червона", "grams": 15},
+            {"product": "Зелень мікс (рукола салат)", "grams": 20},
+            {"product": "Вершкове масло", "grams": 3}
         ]
     },
     {
