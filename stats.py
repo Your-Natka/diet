@@ -1,7 +1,24 @@
 import csv
 from datetime import date, datetime, timedelta
 from collections import defaultdict
+import os
+import sys
 
+# ---------- ВІДКРИТТЯ ПАПКИ З ІДЕЯМИ ----------
+def open_info_media():
+    path = os.path.abspath("info_media")
+
+    if not os.path.exists(path):
+        print("❗ Папка info_media не знайдена")
+        return
+
+    if sys.platform.startswith("win"):
+        os.startfile(path)
+    elif sys.platform == "darwin":  # macOS
+        os.system(f"open '{path}'")
+    else:  # linux
+        os.system(f"xdg-open '{path}'")
+        
 # ---------- ЗАВАНТАЖЕННЯ БАЗИ ПРОДУКТІВ ----------
 def load_foods(path="foods_100g_ua.csv"):
     foods = {}
@@ -84,6 +101,11 @@ def stats_week(entries, foods):
         avg = sum(per_day.values()) / len(per_day)
         print(f"\n📉 Середнє за день: {round(avg,1)} ккал")
 
+        print(
+            "\n💡 Хочеш більше різноманіття у раціоні?\n"
+            "📂 Зазирни в папку з ідеями та фото: info_media/"
+            )
+        open_info_media()
 # ---------- ГОЛОВНИЙ ЗАПУСК ----------
 if __name__ == "__main__":
     foods = load_foods()
