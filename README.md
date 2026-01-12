@@ -15,3 +15,5 @@ diet_app/
 ├── examples.json # приклади сніданків
 ├── diary.csv # щоденник
 └── app.py # програма
+
+npm run dev
